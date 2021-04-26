@@ -1,21 +1,25 @@
-2021-04-27 01:06:17,423 - loggingerror - ERROR - FATAL:  database "tabledata" does not exist
+2021-04-27 02:10:20,168 - loggingerror - ERROR - must be str, not int
 Traceback (most recent call last):
-  File "E:\pythonflaskapiexample\crudoperations.py", line 92, in selectdatabytype
-    conn = psycopg2.connect(dbname=databasename, user=username, host=hostname, password=password, port=portname)
-  File "C:\ProgramData\Anaconda3\lib\site-packages\psycopg2\__init__.py", line 127, in connect
-    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
-psycopg2.OperationalError: FATAL:  database "tabledata" does not exist
+  File "E:\pythonflaskapiexample\crudoperations.py", line 95, in selectdatabytypeandid
+    sql = "select * from tabledata.songsdata where type='"+type+"' and id="+id
+TypeError: must be str, not int
+2021-04-27 02:26:29,329 - loggingerror - ERROR - syntax error at or near "id"
+LINE 1: delete from tabledata.songsdata where type='ab' id=1
+                                                        ^
+Traceback (most recent call last):
+  File "E:\pythonflaskapiexample\crudoperations.py", line 59, in deletefromtable
+    cursor.execute(sql)
+psycopg2.errors.SyntaxError: syntax error at or near "id"
+LINE 1: delete from tabledata.songsdata where type='ab' id=1
+                                                        ^
 
-2021-04-27 01:07:00,761 - loggingerror - ERROR - FATAL:  database "tabledata" does not exist
+2021-04-27 02:26:33,477 - loggingerror - ERROR - syntax error at or near "id"
+LINE 1: delete from tabledata.songsdata where type='ab' id=1
+                                                        ^
 Traceback (most recent call last):
-  File "E:\pythonflaskapiexample\crudoperations.py", line 92, in selectdatabytype
-    conn = psycopg2.connect(dbname=databasename, user=username, host=hostname, password=password, port=portname)
-  File "C:\ProgramData\Anaconda3\lib\site-packages\psycopg2\__init__.py", line 127, in connect
-    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
-psycopg2.OperationalError: FATAL:  database "tabledata" does not exist
+  File "E:\pythonflaskapiexample\crudoperations.py", line 59, in deletefromtable
+    cursor.execute(sql)
+psycopg2.errors.SyntaxError: syntax error at or near "id"
+LINE 1: delete from tabledata.songsdata where type='ab' id=1
+                                                        ^
 
-2021-04-27 01:30:17,984 - loggingerror - ERROR - 0
-Traceback (most recent call last):
-  File "E:\pythonflaskapiexample\crudoperations.py", line 28, in insertintotable
-    d = data[i]
-KeyError: 0

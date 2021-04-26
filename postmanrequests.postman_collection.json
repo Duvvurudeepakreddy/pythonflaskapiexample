@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "e79712d4-c3fb-4817-949e-fd46eaed0d5b",
+		"name": "postmanrequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getsongsby type or (type and id)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/getsongs?type=ab&id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"getsongs"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "ab"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE(INSERTS)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"author\": \"a\",\r\n        \"duration\": 100,\r\n        \"host\": \"h\",\r\n        \"id\": 1.0,\r\n        \"narrator\": \"k\",\r\n        \"participants\": \"p\",\r\n        \"title_of_the_song\": \"ABCD\",\r\n        \"type\": \"ab\",\r\n        \"uploaded_time\": 123\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE by (ID&type)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by type and id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"author\": \"abcd\",\r\n        \"duration\": 100,\r\n        \"host\": \"h\",\r\n        \"id\": 2,\r\n        \"narrator\": \"k\",\r\n        \"participants\": \"p\",\r\n        \"title_of_the_song\": \"ABCD\",\r\n        \"type\": \"ab\",\r\n        \"uploaded_time\": 123\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/update?type=ab&id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"update"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "ab"
+						},
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

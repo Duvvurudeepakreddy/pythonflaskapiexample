@@ -6,6 +6,7 @@ app = Flask(__name__)
 port = int(os.getenv('PORT', 8081))
 #cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
+@cross_origin
 @app.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
@@ -14,12 +15,17 @@ def create():
     d['status'] = insertintotable(data)
     return jsonify(d)
 
-
-@app.route('/update/<type>/<id>', methods=['POST'])
+@cross_origin
+@app.route('/update', methods=['POST'])
 def update():
+    d = {}
+    d = request.args.to_dict()
+    print(d)
+    type = request.args.get('type')
+    id = request.args.get('id')
     data = request.get_json()
     print(data)
-    msg=deletefromtable(id)
+    msg=deletefromtable(type,id)
     d = {}
     if msg!="success":
         d['status']="failure"
@@ -27,23 +33,30 @@ def update():
     d['status'] = insertintotable(data)
     return jsonify(d)
 
-@app.route('/delete/<id>', methods=['GET'])
-def delete(id):
+@cross_origin
+@app.route('/delete', methods=['GET'])
+def delete():
     d = {}
-    d['status'] = deletefromtable(id)
+    d = request.args.to_dict()
+    print(d)
+    type = request.args.get('type')
+    id= request.args.get('id')
+    d = {}
+    d['status'] = deletefromtable(type,id)
     return jsonify(d)
 
-@app.route('/getsongsbytypeandid/<type>/<id>', methods=['GET'])
-def getsongsbytypeandid(type,id):
-    return jsonify(selectdatabytypeandid(type,id))
-
-@app.route('/getsongsbytype', methods=['GET'])
-def getsongsbytype():
+@cross_origin
+@app.route('/getsongs', methods=['GET'])
+def getsongs():
     print(request.args)
+    d={}
+    d=request.args.to_dict()
+    print(d)
     type = request.args.get('type')
-    #data = request.get_json()
-    #print(data)
-    return jsonify(selectdatabytype(type))
+    if "id" in d.keys():
+        id=d['id']
+        return jsonify(selectdatabytypeandid(type,id))
+    return jsonify(selectdatabytypeandid(type))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=False)
