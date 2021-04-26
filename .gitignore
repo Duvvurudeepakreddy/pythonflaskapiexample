@@ -1,8 +1,6 @@
-ip2*.log
-###dataProcessing/config.json###
 *.log
 __pycache__
 
 ### Model###
 *.sav
-
+.idea
